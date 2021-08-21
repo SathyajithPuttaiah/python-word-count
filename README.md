@@ -1,4 +1,4 @@
-# Counting a word occurance in an article
+# Counting word occurance in an article
 
 ## Summary
 To find how often the input word is being referenced in a wikipedia article.
