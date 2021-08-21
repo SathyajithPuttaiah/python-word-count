@@ -1,0 +1,33 @@
+version : '3.8'
+
+services:
+    mysql-db:
+        image: mysql:5.7
+        volumes:
+            - db_data:/var/lib/mysql
+        restart: always
+        ports:
+            - 5001:5001
+        environment:
+            MYSQL_ROOT_PASSWORD: HOy%r<5obb_k
+            MYSQL_DATABASE: wiki_database
+            MYSQL_USER: sathya
+            MYSQL_PASSWORD: Sathyajith@123
+    
+#    python-app:
+#        depends_on:
+#            - mysql-db
+#        build:
+#            context: .
+#        volumes:
+#            - ./:/app
+    python-app:
+        depends_on:
+            - mysql-db
+        image: sathyajith91/python-wordcount-app:1.1
+
+volumes:
+    db_data: {}
+
+#docker exec -it inter_tests_mysql-db_1 bash
+#docker volume rm $(docker volume ls -q)
