@@ -29,5 +29,5 @@ But we can also make use of **beautifulsoup** and **requests** packages in order
 ### Step3
 - access the flask application from web and input the word you want to search
 ex : if you want the occurance of word 'taxi', 
-    http://127.0.0.1:5000/input-data?word=taxi
+    http://127.0.0.1:5000/taxi
 - Application will find the occurance and output the same
