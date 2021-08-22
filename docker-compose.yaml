@@ -2,12 +2,12 @@ version : '3.8'
 
 services:
     mysql-db:
-        image: mysql:5.7
+        image: mysql:latest
         volumes:
             - db_data:/var/lib/mysql
         restart: always
         ports:
-            - 5001:5001
+            - 3306:3306
         environment:
             MYSQL_ROOT_PASSWORD: HOy%r<5obb_k
             MYSQL_DATABASE: wiki_database
@@ -19,17 +19,19 @@ services:
 #            - mysql-db
 #        build:
 #            context: ./app
-#        volumes:
-#            - ./:/app
+
     crawler:
         depends_on:
             - mysql-db
-        image: sathyajith91/crawler:1.0
+        image: sathyajith91/crawler:1.3
     
     flask-app:
         depends_on:
             - mysql-db
-        image: sathyajith91/flask-app:1.1
+            - crawler
+        image: sathyajith91/flask-app:1.3
+        ports:
+            - 5000:5000
 
 volumes:
     db_data: {}

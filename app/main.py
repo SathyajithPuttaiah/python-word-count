@@ -1,3 +1,4 @@
+import time
 
 from helper import helper
 
@@ -9,6 +10,8 @@ helper_obj = helper()
 
 
 try:
+
+    time.sleep(3)
 
     #get the DB connection
     cnx,cur = helper_obj.get_connection_details()

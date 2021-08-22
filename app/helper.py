@@ -1,6 +1,7 @@
 import mysql.connector
 import wikipedia
 import re
+from mysql.connector import errorcode
 
 class helper:
 
@@ -22,7 +23,6 @@ class helper:
                 'password': MYSQL_PASS,
                 #'host': '13.235.71.113',
                 'host': MYSQL_HOST,
-                'raise_on_warnings': True,
                 'port': MYSQL_PORT
             }
 
@@ -35,6 +35,7 @@ class helper:
                 print("Something is wrong with your user name or password")
             else:
                 print('Error in get_connection_details():',err)
+                raise
 
     def create_database(self,cnx,cur):
         try:
@@ -60,6 +61,7 @@ class helper:
             cnx.close()
             cur.close()
             print('error in create_database():',e)
+            raise
 
     def create_table(self,cnx,cur):
         try:
@@ -86,6 +88,7 @@ class helper:
             cnx.close()
             cur.close()
             print('error in create_table():',e)
+            raise
 
     def search_wikipedia(self,word_to_search,cnx,cur):
         try:
@@ -122,3 +125,4 @@ class helper:
             cnx.close()
             cur.close()
             print('error in search_wikipedia():',e)
+            raise

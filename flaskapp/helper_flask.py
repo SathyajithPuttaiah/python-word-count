@@ -1,5 +1,6 @@
 import mysql.connector
 import re
+from mysql.connector import errorcode
 
 class helper_flask:
 
@@ -20,7 +21,6 @@ class helper_flask:
                 'user': MYSQL_USER,
                 'password': MYSQL_PASS,
                 'host': MYSQL_HOST,
-                'raise_on_warnings': True,
                 'port': MYSQL_PORT
             }
 
@@ -33,6 +33,7 @@ class helper_flask:
                 print("Something is wrong with your user name or password")
             else:
                 print('Error in get_connection_details():',err)
+                raise
     
     def get_word_count(self,word_to_search):
         try:
@@ -58,6 +59,9 @@ class helper_flask:
             return result_dict
 
         except Exception as e:
+            cnx.close()
+            cur.close()
             print('error in get_word_count():',e)
+            raise
 
     

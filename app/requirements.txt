@@ -1,2 +1,2 @@
 wikipedia
-mysql-connector-python==8.0.5
+mysql-connector-python==8.0.21
