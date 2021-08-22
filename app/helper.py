@@ -43,7 +43,7 @@ class helper:
             query = """SELECT count(1)
                     FROM information_schema.schemata
                     WHERE lower(schema_name) LIKE 'wiki_database';"""
-            print('query:',query)
+            #print('query:',query)
 
             cur.execute(query)
             db_count = cur.fetchone()[0]
@@ -68,7 +68,7 @@ class helper:
             query = """SELECT count(1) from information_schema.tables 
                     where lower(table_name) = 'wiki_table'
                     and lower(table_schema) = 'wiki_database' ;"""
-            print('query:',query)
+            #print('query:',query)
 
             cur.execute(query)
             table_count = cur.fetchone()[0]

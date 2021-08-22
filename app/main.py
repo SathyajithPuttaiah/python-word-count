@@ -21,5 +21,7 @@ try:
 
     helper_obj.search_wikipedia(word_to_search,cnx,cur)
 
+    print('process completed')
+
 except Exception as e:
     print('Error in process:',e)

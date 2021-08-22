@@ -18,13 +18,18 @@ services:
 #        depends_on:
 #            - mysql-db
 #        build:
-#            context: .
+#            context: ./app
 #        volumes:
 #            - ./:/app
-    python-app:
+    crawler:
         depends_on:
             - mysql-db
-        image: sathyajith91/python-wordcount-app:1.1
+        image: sathyajith91/crawler:1.0
+    
+    flask-app:
+        depends_on:
+            - mysql-db
+        image: sathyajith91/flask-app:1.1
 
 volumes:
     db_data: {}
