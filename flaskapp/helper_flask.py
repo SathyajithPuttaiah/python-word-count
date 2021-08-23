@@ -2,7 +2,7 @@ import mysql.connector
 import re
 from mysql.connector import errorcode
 
-class helper_flask:
+class WordCount:
 
     def __init__(self):
         pass

@@ -1,28 +1,30 @@
 import time
 
-from helper import helper
+from database_helper import DatabaseHelper
+from retrieve_wiki import RetrieveWiki
 
 #word to be searched
 word_to_search = 'taxi'
 
-#helper object
-helper_obj = helper()
+#object creation
+db = DatabaseHelper()
+wiki = RetrieveWiki()
 
 
 try:
 
-    time.sleep(3)
+    #time.sleep(5)
 
     #get the DB connection
-    cnx,cur = helper_obj.get_connection_details()
+    cnx,cur = db.get_connection_details()
 
     #create database 'wiki_database' if its not present
-    helper_obj.create_database(cnx,cur)
+    db.create_database(cnx,cur)
 
     #create table 'wiki_table' if its not present
-    helper_obj.create_table(cnx,cur)
+    db.create_table(cnx,cur)
 
-    helper_obj.search_wikipedia(word_to_search,cnx,cur)
+    wiki.retrieve(word_to_search,cnx,cur)
 
     print('process completed')
 

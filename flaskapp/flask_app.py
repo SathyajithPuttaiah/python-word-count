@@ -1,11 +1,11 @@
 from flask import Flask
-from helper_flask import helper_flask
+from helper_flask import WordCount
 from flask import jsonify
 
 app = Flask(__name__) 
 
 #helper object
-helper_obj = helper_flask()
+wc = WordCount()
 
 @app.route("/")
 def hello():
@@ -16,7 +16,7 @@ def find_occurance_count(word):
     #word = request.args.get('word')
     print('received word is:',word)
     #return "Hello World! to :"+ word
-    result_dict = helper_obj.get_word_count(word)
+    result_dict = wc.get_word_count(word)
     return jsonify(result_dict)
 
 if __name__ == "__main__": 
