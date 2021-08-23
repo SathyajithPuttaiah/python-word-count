@@ -9,36 +9,33 @@ services:
         ports:
             - 3306:3306
         environment:
-            MYSQL_ROOT_PASSWORD: HOy%r<5obb_k
-            MYSQL_DATABASE: wiki_database
-            MYSQL_USER: sathya
-            MYSQL_PASSWORD: Sathyajith@123
-    
-#    python-app:
-#        depends_on:
-#            - mysql-db
-#        build:
-#            context: ./app
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASS}
+            MYSQL_DATABASE: ${MYSQL_DB}
+            MYSQL_USER: ${MYSQL_USR}
+            MYSQL_PASSWORD: ${MYSQL_PASS}
 
     crawler:
         depends_on:
             - mysql-db
-        image: sathyajith91/crawler:1.4
+        image: sathyajith91/crawler:1.5
         #build:
         #    context: ./app
+        environment: 
+            MYSQL_USER: ${MYSQL_USR}
+            MYSQL_PASSWORD: ${MYSQL_PASS}
     
     flask-app:
         depends_on:
             - mysql-db
             - crawler
-        image: sathyajith91/flask-app:1.4
+        image: sathyajith91/flask-app:1.5
         #build:
         #    context: ./flaskapp
         ports:
             - 5000:5000
+        environment: 
+            MYSQL_USER: ${MYSQL_USR}
+            MYSQL_PASSWORD: ${MYSQL_PASS}
 
 volumes:
     db_data: {}
-
-#docker exec -it inter_tests_mysql-db_1 bash
-#docker volume rm $(docker volume ls -q)

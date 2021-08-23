@@ -33,10 +33,15 @@ But we can also make use of **beautifulsoup** and **requests** packages in order
 - I have hard coded user name and password while getting MySQL connection. We can store these as environment variables and use accordingly.
 
 ### Step2
+- We should not keep any secret info(for ex: MySQL DB credentails) in any of the images.
+- create .env file and store all your secrets in there. For example credentials of MySQL db.
+- This information will be used in the containers
+
+### Step3
 - run **docker-compose up** command
 - This will create the containers listed in docker-compose file and create network between them.
 
-### Step3
+### Step4
 - access the flask application from web and input the word you want to search
 - example
     - when access http://127.0.0.1:5000/ , it will print hello world

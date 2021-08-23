@@ -1,6 +1,7 @@
 import mysql.connector
 import wikipedia
 import re
+import os
 from mysql.connector import errorcode
 
 class DatabaseHelper:
@@ -11,11 +12,9 @@ class DatabaseHelper:
     def get_connection_details(self):
         try:
 
-            #can set these as ENV variables
-            MYSQL_USER = 'sathya'
-            MYSQL_PASS = 'Sathyajith@123'
+            MYSQL_USER = os.environ['MYSQL_USER']
+            MYSQL_PASS = os.environ['MYSQL_PASSWORD']
             MYSQL_HOST = 'mysql-db'
-            #MYSQL_HOST = '65.0.11.162'
             MYSQL_PORT = 3306
 
             config = {
